@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armel Mounet, Consultant Data Scientist</title>
+<meta name="description" content="Armel Mounet, Consultant Data Scientist à la DSI d'Orange Côte d'Ivoire. Pilotage de la performance IT, Machine Learning, Power BI, applications Django + Angular et Flutter. Abidjan.">
+<meta property="og:title" content="Armel Mounet, Consultant Data Scientist">
+<meta property="og:description" content="Pilotage de la performance IT, Machine Learning, Power BI et applications métier. Abidjan, Côte d'Ivoire.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://andrearmel.github.io/photo.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231F4FD8%22/><text x=%2250%22 y=%2268%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-weight=%22700%22>AM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff;
+  --mist:#f2f4f7;
+  --ink:#0e1726;
+  --slate:#4a5568;
+  --quiet:#7a8496;
+  --rule:#dde2ea;
+  --cobalt:#1f4fd8;
+  --cobalt-dark:#173ca6;
+  --signal:#e8590c;
+  --ok:#12805c;
+  --max:1200px;
+  --gutter:clamp(20px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 0}
+img{display:block;max-width:100%}
+a{color:var(--cobalt);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:2px}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.cond{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",sans-serif}
+
+/* ---------- Navigation ---------- */
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.top.lined{border-color:var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em}
+.brand:hover{text-decoration:none}
+.menu{display:flex;align-items:center;gap:30px;font-size:15px}
+.menu a{color:var(--slate)}
+.menu a:hover{color:var(--ink);text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:6px;font-weight:500;font-size:15px;border:1px solid transparent;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--cobalt);color:#fff}
+.btn-primary:hover{background:var(--cobalt-dark)}
+.btn-line{border-color:var(--rule);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.menu .btn{height:40px;padding:0 16px;color:#fff}
+.menu .btn:hover{color:#fff}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--rule);border-radius:6px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(48px,8vw,96px) 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(32px,6vw,80px);align-items:end}
+.name{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:clamp(64px,11vw,148px);line-height:.86;letter-spacing:-.035em;color:var(--ink)}
+.name span{display:block}
+.role{margin-top:28px;font-size:clamp(19px,2.1vw,23px);line-height:1.4;color:var(--ink);max-width:30ch;font-weight:500}
+.role small{display:block;font-size:17px;font-weight:400;color:var(--slate);margin-top:6px}
+.pitch{margin-top:22px;max-width:56ch;color:var(--slate)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.portrait{position:relative}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:4px;background:var(--mist)}
+.portrait figcaption{margin-top:12px;font-size:14px;color:var(--quiet);display:flex;justify-content:space-between;gap:12px}
+.status{display:inline-flex;align-items:center;gap:8px;color:var(--ok);font-weight:500}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+
+/* ---------- Chart ---------- */
+.chart-band{margin-top:clamp(48px,7vw,80px);background:var(--mist);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.chart-grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,5vw,64px);padding-top:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px);align-items:center}
+.chart-copy h2{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:26px;line-height:1.15;letter-spacing:-.01em}
+.chart-copy p{margin-top:14px;font-size:15px;color:var(--slate)}
+.facts{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.facts dt{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.facts dd{color:var(--slate)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--slate);margin-bottom:10px}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:7px;border-radius:2px}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--signal) 0 5px,transparent 5px 9px);height:2px}
+.chart-grid>div{min-width:0}
+.chart-scroll{position:relative}
+svg.sla{width:100%;height:auto;display:block;overflow:visible}
+@media (max-width:640px){.chart-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-top:64px;margin-top:-64px}svg.sla{min-width:620px}.chart-note::after{content:" Faites défiler le graphique horizontalement."}}
+svg.sla text{font-family:"IBM Plex Sans";font-size:12px;fill:var(--quiet)}
+svg.sla .grid{stroke:var(--rule);stroke-width:1}
+svg.sla .thr{stroke:var(--signal);stroke-width:1.5;stroke-dasharray:6 5}
+svg.sla .thr-label{fill:var(--signal);font-weight:500}
+svg.sla .l1{fill:none;stroke:var(--cobalt);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+svg.sla .l2{fill:none;stroke:#9aa3b2;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+svg.sla .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 1.8s cubic-bezier(.4,0,.2,1) .3s forwards}
+svg.sla .dot{opacity:0;animation:pop .3s ease forwards}
+svg.sla .breach{fill:var(--signal)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+.chart-note{margin-top:8px;font-size:12px;color:var(--quiet)}
+
+/* ---------- Sections ---------- */
+section.block{padding:clamp(72px,10vw,120px) 0;border-bottom:1px solid var(--rule)}
+section.block.tint{background:var(--mist)}
+.sec-head{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,5vw,64px);margin-bottom:48px;align-items:baseline}
+.sec-head h2{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:clamp(32px,4vw,44px);line-height:1.05;letter-spacing:-.02em}
+.sec-head p{color:var(--slate);max-width:60ch}
+.body-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,5vw,64px)}
+
+/* Profil */
+.profile p{max-width:64ch;margin-bottom:18px;font-size:18px;line-height:1.65}
+.profile p:first-child{font-size:21px;line-height:1.5;color:var(--ink)}
+.keyfacts{list-style:none;font-size:15px;border-top:1px solid var(--rule)}
+.keyfacts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.keyfacts span:first-child{color:var(--quiet)}
+.keyfacts span:last-child{text-align:right;font-weight:500}
+
+/* Expérience */
+.jobs{list-style:none;border-top:1px solid var(--ink)}
+.job{display:grid;grid-template-columns:260px minmax(0,1fr);gap:0 clamp(24px,5vw,64px);padding:32px 0;border-bottom:1px solid var(--rule)}
+.job .head{display:flex;gap:18px;align-items:center}
+.job .when{font-size:15px;color:var(--slate);font-variant-numeric:tabular-nums;padding-top:4px}
+.job .when b{display:block;color:var(--ink);font-weight:600}
+.job .logo{width:56px;height:56px;border:1px solid var(--rule);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;padding:7px}
+.job .logo img{max-height:100%;object-fit:contain}
+.job .logo.wa{background:#25d366;border-color:#25d366;color:#fff}
+.job h3{font-size:20px;font-weight:600;line-height:1.3}
+.job .org{color:var(--slate);margin-top:2px;font-size:16px}
+.job ul{list-style:disc;margin-top:16px;padding-left:18px;color:#2b3445;max-width:70ch}
+.job li{margin-bottom:6px;padding-left:4px}
+.job li::marker{color:var(--quiet)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.tag{font-size:13px;padding:3px 10px;border:1px solid var(--rule);border-radius:4px;color:var(--slate);background:#fff}
+
+/* Projets */
+.case{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);padding:40px;background:#fff;border:1px solid var(--rule);border-radius:6px;margin-bottom:56px}
+.case .kicker{font-size:14px;color:var(--cobalt);font-weight:500}
+.case h3{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-.015em;margin:8px 0 16px}
+.case p{color:#2b3445;max-width:58ch}
+.steps{list-style:none;counter-reset:s;margin-top:20px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;padding:10px 0;border-top:1px solid var(--rule);font-size:15px}
+.steps li::before{content:counter(s);font-weight:600;color:var(--cobalt);font-variant-numeric:tabular-nums}
+.case aside{align-self:start;border-left:1px solid var(--rule);padding-left:clamp(20px,3vw,40px)}
+.case aside h4{font-size:14px;font-weight:600;margin-bottom:12px;color:var(--slate)}
+.bars{list-style:none}
+.bars li{display:grid;grid-template-columns:96px 1fr 48px;align-items:center;gap:12px;font-size:14px;padding:7px 0}
+.bars .track{height:8px;background:var(--mist);border-radius:2px;position:relative}
+.bars .track i{position:absolute;left:0;top:0;bottom:0;background:var(--cobalt);border-radius:2px}
+.bars .track i.low{background:var(--signal)}
+.bars .track::after{content:"";position:absolute;top:-4px;bottom:-4px;left:calc((85 - 60) / 40 * 100%);border-left:1.5px dashed var(--signal)}
+.bars b{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.bars-note{font-size:12px;color:var(--quiet);margin-top:10px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+
+.plist-title{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:22px;margin:0 0 6px}
+.plist-sub{color:var(--slate);font-size:15px;margin-bottom:18px}
+.plist{list-style:none;border-top:1px solid var(--ink);margin-bottom:56px}
+.plist:last-child{margin-bottom:0}
+.prow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) minmax(0,1fr) 110px;gap:24px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.prow h4{font-size:17px;font-weight:600;line-height:1.35}
+.prow p{font-size:15px;color:var(--slate)}
+.prow .tech{font-size:14px;color:var(--slate)}
+.prow .st{font-size:13px;font-weight:500;text-align:right;color:var(--quiet)}
+.prow .st.live{color:var(--ok)}
+.prow .st.wip{color:var(--signal)}
+.plist-head{font-size:13px;color:var(--quiet);padding:10px 0;border-bottom:1px solid var(--rule)}
+.plist-head h4,.plist-head p,.plist-head .tech,.plist-head .st{font-size:13px;font-weight:400;color:var(--quiet)}
+
+/* Compétences */
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 32px}
+.skill h3{font-size:16px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+.skill ul{list-style:none}
+.skill li{padding:5px 0;color:#2b3445;font-size:15px}
+
+/* Formation */
+.edu{list-style:none;border-top:1px solid var(--ink)}
+.edu li{display:grid;grid-template-columns:140px 48px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:center}
+.edu .yr{font-variant-numeric:tabular-nums;color:var(--slate);font-size:15px}
+.edu .logo{width:48px;height:48px;border:1px solid var(--rule);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;padding:5px;font-weight:600;font-size:13px;color:var(--slate)}
+.edu .logo img{max-height:100%;object-fit:contain}
+.edu h3{font-size:18px;font-weight:600;line-height:1.3}
+.edu p{color:var(--slate);font-size:15px}
+.edu p.memo{margin-top:4px;font-size:14px;color:var(--ink)}
+.edu p.memo::before{content:"";display:inline-block;width:14px;height:2px;background:var(--cobalt);vertical-align:middle;margin-right:8px}
+.edu .now{color:var(--ok);font-weight:500;font-size:13px;margin-left:8px}
+.certs{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--ink);margin-top:56px}
+.certs li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:center}
+.certs .logo{width:40px;height:40px;border:1px solid var(--rule);border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;padding:4px;overflow:hidden}
+.certs .logo img{max-height:100%;object-fit:contain}
+.certs .logo.cisco{background:#049fd9;border-color:#049fd9;color:#fff;font-size:9px;font-weight:700;letter-spacing:.02em;padding:0}
+.certs b{display:block;font-weight:600;font-size:15px;line-height:1.35}
+.certs span{color:var(--slate);font-size:14px}
+.certs-title{display:flex;justify-content:space-between;align-items:baseline;margin-top:64px}
+.certs-title h3{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:22px}
+.certs-title span{color:var(--quiet);font-size:15px}
+.certs-title + .certs{margin-top:14px}
+.misc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:64px}
+.misc h3{font-size:16px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+.misc p{color:#2b3445;font-size:15px}
+.misc p span{color:var(--slate)}
+
+/* Contact */
+.contact{padding:clamp(80px,11vw,140px) 0;background:var(--ink);color:#fff}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:end}
+.contact h2{font-family:"IBM Plex Sans Condensed";font-weight:600;font-size:clamp(40px,6vw,76px);line-height:.98;letter-spacing:-.03em}
+.contact .lead{margin-top:20px;color:#b9c2d0;max-width:46ch;font-size:18px}
+.mail{display:inline-block;margin-top:32px;font-size:clamp(20px,2.6vw,30px);font-weight:500;color:#fff;border-bottom:2px solid #5b7cff;padding-bottom:4px;word-break:break-all}
+.mail:hover{text-decoration:none;border-color:#fff}
+.channels{list-style:none;border-top:1px solid #2a3547}
+.channels li{border-bottom:1px solid #2a3547}
+.channels a{display:flex;justify-content:space-between;gap:16px;padding:18px 0;color:#fff;font-size:16px}
+.channels a:hover{text-decoration:none;color:#9db1ff}
+.channels a span:first-child{color:#8f9aad}
+.contact .btn-primary{margin-top:28px;background:#fff;color:var(--ink)}
+.contact .btn-primary:hover{background:#dfe6ff}
+.contact :focus-visible{outline-color:#9db1ff}
+footer{background:var(--ink);color:#8f9aad;font-size:14px;border-top:1px solid #2a3547}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:24px;padding-bottom:24px;flex-wrap:wrap}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prow{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) 100px}
+  .prow .tech{display:none}
+  .case{grid-template-columns:1fr}
+  .case aside{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:24px}
+}
+@media (max-width:820px){
+  .menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--rule);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gutter) 20px}
+  .menu.open{display:flex}
+  .menu a{padding:14px 0;border-bottom:1px solid var(--rule)}
+  .menu .btn{margin-top:14px;border:0}
+  .burger{display:flex}
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{max-width:300px;order:-1}
+  .chart-grid,.sec-head,.body-grid,.contact-grid{grid-template-columns:1fr}
+  .sec-head{margin-bottom:32px}
+  .job{grid-template-columns:1fr;gap:0}
+  .job .when{margin-bottom:14px}
+  .job .logo{width:48px;height:48px;flex:none}
+  .prow{grid-template-columns:1fr;gap:4px}
+  .prow .st{text-align:left}
+  .plist-head{display:none}
+  .certs,.misc{grid-template-columns:1fr}
+  .edu li{grid-template-columns:48px minmax(0,1fr);gap:4px 16px}
+  .edu .yr{grid-column:1 / -1}
+  .case{padding:24px}
+}
+@media (max-width:520px){
+  .skills{grid-template-columns:1fr}
+  .bars li{grid-template-columns:84px 1fr 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  svg.sla .draw{animation:none;stroke-dashoffset:0}
+  svg.sla .dot{animation:none;opacity:1}
+}
+
+/* ================= MOTION ================= */
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--cobalt);transform-origin:0 50%;transform:scaleX(0);z-index:30}
+.menu a.cur{color:var(--ink)}
+.menu .ind{position:absolute;bottom:14px;height:2px;background:var(--cobalt);border-radius:2px;transition:left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),opacity .2s;opacity:0;pointer-events:none}
+.menu{position:relative}
+
+/* hero load sequence */
+.name .ch{display:inline-block;transform:translateY(105%);opacity:0;animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 40ms + 100ms)}
+.name span{overflow:hidden;padding-bottom:.04em}
+@keyframes rise{to{transform:none;opacity:1}}
+.intro-in{opacity:0;transform:translateY(16px);animation:fadeup .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,.6s)}
+@keyframes fadeup{to{opacity:1;transform:none}}
+.portrait img{clip-path:inset(100% 0 0 0);animation:unveil 1.2s cubic-bezier(.7,0,.2,1) .25s forwards}
+@keyframes unveil{to{clip-path:inset(0 0 0 0)}}
+.portrait{overflow:hidden}
+.status::before{animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(18,128,92,.5)}70%{box-shadow:0 0 0 8px rgba(18,128,92,0)}100%{box-shadow:0 0 0 0 rgba(18,128,92,0)}}
+
+/* ticker */
+.ticker{background:var(--ink);color:#c8d0dd;overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--ink)}
+.ticker .track{display:inline-flex;gap:0;animation:tick 40s linear infinite;padding:16px 0}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span{font-size:15px;padding:0 26px;position:relative}
+.ticker span::after{content:"";position:absolute;right:-3px;top:50%;width:5px;height:5px;border-radius:50%;background:#5b7cff;transform:translateY(-50%)}
+.ticker span:nth-child(4n)::after{background:var(--signal)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--rd,0s)}
+.reveal.in{opacity:1;transform:none}
+.sec-head h2{position:relative;display:inline-block}
+.sec-head h2::after{content:"";position:absolute;left:0;bottom:-10px;height:3px;width:0;background:var(--cobalt);transition:width .9s cubic-bezier(.2,.8,.2,1) .2s}
+.sec-head.in h2::after{width:48px}
+.skill h3,.misc h3{position:relative;border-bottom-color:var(--rule)}
+.skill h3::after,.misc h3::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--ink);transition:width 1s cubic-bezier(.2,.8,.2,1) var(--rd,0s)}
+.skill.in h3::after,.misc .in h3::after,.misc.in h3::after{width:100%}
+
+/* experience timeline progress */
+.jobs{position:relative}
+.jobs::before{content:"";position:absolute;left:-28px;top:0;bottom:0;width:2px;background:var(--rule)}
+.jobs .rail{position:absolute;left:-28px;top:0;width:2px;height:0;background:var(--cobalt)}
+.job .head .logo{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.job:hover .head .logo{transform:scale(1.08) rotate(-3deg)}
+
+/* rows */
+.prow{position:relative;transition:background .25s,padding .25s}
+.prow:not(.plist-head):hover{background:#fff;padding-left:14px;padding-right:14px;margin:0 -14px;box-shadow:0 10px 30px -18px rgba(14,23,38,.25)}
+.prow:not(.plist-head) h4{transition:color .2s}
+.prow:not(.plist-head):hover h4{color:var(--cobalt)}
+.tint .prow:not(.plist-head):hover{background:#fff}
+
+/* bars grow */
+.bars .track i{transform:scaleX(0);transform-origin:0 50%;transition:transform 1.3s cubic-bezier(.2,.8,.2,1);transition-delay:var(--rd,0s)}
+.case.in .bars .track i{transform:none}
+.steps li{transition:background .2s,padding .2s}
+.steps li:hover{background:var(--mist);padding-left:8px}
+
+/* certs */
+.certs li{transition:transform .25s}
+.certs li:hover{transform:translateX(6px)}
+.certs li:hover .logo{border-color:var(--cobalt)}
+
+/* buttons */
+.btn{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn-primary:hover::after{left:120%}
+.btn:active{transform:translateY(1px)}
+
+/* chart tooltip */
+.chart-scroll{position:relative}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font-size:13px;line-height:1.45;padding:8px 12px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%);transition:opacity .15s;z-index:2}
+.tip b{font-weight:600}
+.tip .bad{color:#ffb38a}
+svg.sla .hover-line{stroke:var(--ink);stroke-width:1;opacity:0}
+svg.sla .hit{fill:transparent;cursor:crosshair}
+svg.sla .hp{opacity:0;transition:opacity .15s}
+
+/* contact */
+.mail{background:linear-gradient(#5b7cff,#5b7cff) 0 100%/0 2px no-repeat;border-bottom-color:rgba(91,124,255,.35);transition:background-size .4s}
+.mail:hover{background-size:100% 2px}
+.channels a span:last-child{transition:transform .25s}
+.channels a:hover span:last-child{transform:translateX(-6px)}
+
+@media (max-width:820px){.jobs::before,.jobs .rail{display:none}.menu .ind{display:none}.prow:not(.plist-head):hover{margin:0;padding-left:0;padding-right:0;box-shadow:none;background:none}}
+@media (prefers-reduced-motion:reduce){
+  .name .ch,.intro-in,.portrait img{animation:none;opacity:1;transform:none;clip-path:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .ticker .track{animation:none}
+  .bars .track i{transform:none;transition:none}
+  .status::before{animation:none}
+}
+
+/* ================= ASSISTANT ================= */
+.bot-launch{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 16px;border:0;border-radius:26px;background:var(--ink);color:#fff;font:500 15px "IBM Plex Sans",sans-serif;cursor:pointer;box-shadow:0 14px 34px -12px rgba(14,23,38,.55);transition:transform .25s,background .2s;opacity:0;transform:translateY(20px);animation:launchIn .6s cubic-bezier(.2,.8,.2,1) 2.2s forwards}
+@keyframes launchIn{to{opacity:1;transform:none}}
+.bot-launch:hover{background:var(--cobalt)}
+.bot-launch .av{width:28px;height:28px;border-radius:50%;background:var(--cobalt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;position:relative}
+.bot-launch:hover .av{background:#fff;color:var(--cobalt)}
+.bot-launch .av::after{content:"";position:absolute;right:-1px;bottom:-1px;width:9px;height:9px;border-radius:50%;background:#2fd08c;border:2px solid var(--ink)}
+.bot-launch.hidden{display:none}
+.bot{position:fixed;right:24px;bottom:24px;z-index:41;width:380px;max-width:calc(100vw - 32px);height:min(600px,calc(100vh - 48px));background:#fff;border:1px solid var(--rule);border-radius:14px;box-shadow:0 30px 80px -24px rgba(14,23,38,.45);display:flex;flex-direction:column;overflow:hidden;transform-origin:100% 100%;transform:scale(.92) translateY(12px);opacity:0;visibility:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s,visibility .3s}
+.bot.open{transform:none;opacity:1;visibility:visible}
+.bot header{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:var(--ink);color:#fff}
+.bot header img{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 20%;background:#334}
+.bot header b{display:block;font-size:15px;font-weight:600}
+.bot header small{display:flex;align-items:center;gap:6px;font-size:12px;color:#aab4c4}
+.bot header small::before{content:"";width:7px;height:7px;border-radius:50%;background:#2fd08c}
+.bot .x{margin-left:auto;width:36px;height:36px;border-radius:8px;border:0;background:transparent;color:#fff;cursor:pointer;font-size:22px;line-height:1}
+.bot .x:hover{background:rgba(255,255,255,.1)}
+.bot .log{flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;background:var(--mist);scroll-behavior:smooth}
+.msg{max-width:86%;font-size:14.5px;line-height:1.5;padding:10px 13px;border-radius:12px;animation:msgIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}}
+.msg.b{background:#fff;color:var(--ink);border:1px solid var(--rule);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.u{background:var(--cobalt);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.msg a{color:var(--cobalt);font-weight:500}
+.msg ul{margin:6px 0 0 18px}
+.msg li{margin:2px 0}
+.msg .cta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.msg .cta a{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:6px;font-size:13px;text-decoration:none}
+.msg .cta a.wa{background:#25d366;color:#fff}
+.msg .cta a.ml{background:var(--ink);color:#fff}
+.typing{display:inline-flex;gap:4px;padding:13px 14px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--quiet);animation:blinkdot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blinkdot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--mist);border-top:1px solid var(--rule)}
+.sugg button{border:1px solid var(--rule);background:#fff;color:var(--ink);font:13px "IBM Plex Sans",sans-serif;padding:6px 11px;border-radius:16px;cursor:pointer;transition:border-color .15s,color .15s}
+.sugg button:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.bot form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--rule);background:#fff}
+.bot input{flex:1;height:42px;border:1px solid var(--rule);border-radius:8px;padding:0 12px;font:15px "IBM Plex Sans",sans-serif;color:var(--ink)}
+.bot input:focus{outline:2px solid var(--cobalt);outline-offset:-1px;border-color:transparent}
+.bot form button{width:42px;height:42px;border:0;border-radius:8px;background:var(--cobalt);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.bot form button:hover{background:var(--cobalt-dark)}
+.bot .foot{font-size:11px;color:var(--quiet);text-align:center;padding:0 12px 10px;background:#fff}
+@media (max-width:520px){.bot{right:0;bottom:0;width:100%;max-width:100%;height:100%;border-radius:0}.bot-launch{right:16px;bottom:16px}.bot-launch .lbl{display:none}.bot-launch{padding:0 12px}}
+@media (prefers-reduced-motion:reduce){.bot-launch{animation:none;opacity:1;transform:none}.msg{animation:none}.bot{transition:none}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<header class="top" id="top-bar">
+  <div class="wrap nav">
+    <a href="#" class="brand">Armel Mounet</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#profil">Profil</a>
+      <a href="#experience">Expérience</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#formation">Formation</a>
+      <a href="#contact" class="btn btn-primary">Me contacter</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="name"><span>Armel</span><span>Mounet</span></h1>
+      <p class="role intro-in" style="--d:.55s">Consultant Data Scientist à la DSI d'Orange Côte d'Ivoire
+        <small>Abidjan, disponible pour des missions en Côte d'Ivoire et à l'international</small></p>
+      <p class="pitch intro-in" style="--d:.7s">Je mesure la performance du système d'information et je construis les outils qui permettent de la piloter : tableaux de bord Power BI, modèles de Machine Learning et applications métier.</p>
+      <div class="actions intro-in" style="--d:.85s">
+        <a href="#contact" class="btn btn-primary">Me contacter</a>
+        <a href="cv.pdf" class="btn btn-line" download>Télécharger mon CV</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="photo.jpg" alt="Portrait d'Armel Mounet" width="700" height="838">
+      <figcaption><span class="status">Ouvert aux opportunités</span><span>Abidjan</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="chart-band">
+    <div class="wrap chart-grid">
+      <div class="chart-copy reveal">
+        <h2>Prédire la performance des fournisseurs IT avant le dépassement de SLA</h2>
+        <p>C'est le sujet de mon mémoire de Master 2 à Orange CI : repérer à l'avance les mois où un fournisseur risque de passer sous son seuil contractuel.</p>
+        <dl class="facts">
+          <dt><span class="counter" data-to="5523">5 523</span></dt><dd>tickets d'incidents et de demandes</dd>
+          <dt><span class="counter" data-to="10">10</span></dt><dd>fournisseurs, 4 niveaux de priorité</dd>
+          <dt><span class="counter" data-to="85">85</span> %</dt><dd>seuil contractuel de respect des SLA</dd>
+        </dl>
+      </div>
+      <div>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--cobalt)"></i>Fournisseur A</span>
+          <span><i style="background:#9aa3b2"></i>Fournisseur B</span>
+          <span><i class="dash"></i>Seuil contractuel</span>
+        </div>
+        <div class="chart-scroll"><div class="tip" id="tip"></div><svg class="sla" id="sla" viewBox="0 0 760 300" role="img" aria-label="Exemple de courbes de taux de respect des SLA par mois pour deux fournisseurs, comparées au seuil contractuel de 85 %. Le fournisseur B passe sous le seuil en avril, août et novembre."></svg>
+        <p class="chart-note">Exemple de restitution, données anonymisées et simplifiées.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="track"><span>Power BI</span><span>DAX</span><span>Python</span><span>scikit-learn</span><span>pandas</span><span>XGBoost</span><span>TensorFlow</span><span>SQL</span><span>PostgreSQL</span><span>N8N</span><span>GLPI</span><span>Django</span><span>Angular</span><span>Flutter</span><span>Docker</span><span>Linux</span><span>MLflow</span><span>Excel</span><span>Power BI</span><span>DAX</span><span>Python</span><span>scikit-learn</span><span>pandas</span><span>XGBoost</span><span>TensorFlow</span><span>SQL</span><span>PostgreSQL</span><span>N8N</span><span>GLPI</span><span>Django</span><span>Angular</span><span>Flutter</span><span>Docker</span><span>Linux</span><span>MLflow</span><span>Excel</span></div></div>
+
+<!-- ================= PROFIL ================= -->
+<section class="block" id="profil">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Profil</h2></div>
+    <div class="body-grid">
+      <ul class="keyfacts reveal">
+        <li><span>Poste</span><span>Consultant Data Scientist</span></li>
+        <li><span>Entreprise</span><span>Orange Côte d'Ivoire</span></li>
+        <li><span>Formation</span><span>Master 2 Data Science</span></li>
+        <li><span>Langues</span><span>Français, anglais</span></li>
+        <li><span>Permis</span><span>AB</span></li>
+      </ul>
+      <div class="profile reveal" style="--rd:.1s">
+        <p>Mon métier consiste à rendre la performance du SI lisible pour ceux qui décident : taux de résolution des incidents, niveaux de SLA, disponibilité des systèmes.</p>
+        <p>À la DSI d'Orange Côte d'Ivoire, je conçois les tableaux de bord des Comités de Performance IT et j'automatise la collecte des données, de GLPI jusqu'à Power BI. J'analyse la performance des fournisseurs et je modélise les dépassements de SLA.</p>
+        <p>Je développe aussi les applications qui remplacent les fichiers Excel et les processus manuels : suivi budgétaire, gestion des contrats, opérations planifiées. Je m'en occupe de l'analyse du besoin jusqu'au déploiement sur les serveurs de l'entreprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPÉRIENCE ================= -->
+<section class="block tint" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Expérience</h2>
+      <p>Un fil conducteur : la donnée au service de la performance et de la digitalisation des processus.</p>
+    </div>
+    <ol class="jobs" reversed id="jobs"><span class="rail" id="rail" aria-hidden="true"></span>
+      <li class="job reveal">
+        <div class="when"><b>Depuis septembre 2026</b>Abidjan</div>
+        <div>
+          <div class="head"><div class="logo"><img src="logos/orange.png" alt="Orange"></div><div><h3>Consultant Data Scientist</h3><div class="org">Orange Côte d'Ivoire, Direction des Systèmes d'Information</div></div></div>
+          <ul>
+            <li>Tableaux de bord Power BI automatisés pour les Comités de Performance IT : résolution des incidents, SLA, disponibilité.</li>
+            <li>Pipeline de données GLPI, N8N, Power BI qui supprime les extractions manuelles.</li>
+            <li>Analyse de la performance des fournisseurs sur les incidents applicatifs et modélisation des dépassements de SLA.</li>
+            <li>Développement et déploiement d'applications internes (Docker, Linux, authentification Active Directory) : suivi budgétaire OPEX/CAPEX, gestion des contrats, opérations planifiées.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job reveal">
+        <div class="when"><b>Juil. 2025 – juil. 2026</b>12 mois</div>
+        <div>
+          <div class="head"><div class="logo"><img src="logos/orange.png" alt="Orange"></div><div><h3>Stagiaire Analyste Performance Projet</h3><div class="org">Orange Côte d'Ivoire, Direction des Systèmes d'Information</div></div></div>
+          <ul>
+            <li>Tableaux de bord dynamiques sur Excel pour les Comités de Performance IT.</li>
+            <li>Extraction et analyse des données des fournisseurs IT (ATOS, GOS, SMILE…) pour piloter leur performance.</li>
+            <li>Analyse des incidents applicatifs par fournisseur et modélisation des dépassements de SLA.</li>
+            <li>Suivi du portefeuille de projets de la DSI et évaluation des fournisseurs sur les projets.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job reveal">
+        <div class="when"><b>Avr. – mai 2025</b>Adjamé Forum</div>
+        <div>
+          <div class="head"><div class="logo"><img src="logos/chicshop-icon.png" alt="ChicShop"></div><div><h3>Informaticien chargé d'inventaire</h3><div class="org">ChicShop</div></div></div>
+          <ul>
+            <li>Suivi quotidien des inventaires physiques et rapprochement avec les stocks numériques.</li>
+            <li>Rapport quotidien sur l'état des stocks.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job reveal">
+        <div class="when"><b>Juil. 2024 – mars 2025</b>9 mois</div>
+        <div>
+          <div class="head"><div class="logo"><img src="logos/paa.png" alt="Port Autonome d'Abidjan"></div><div><h3>Stagiaire en digitalisation et optimisation des processus</h3><div class="org">Port Autonome d'Abidjan, DSI Numérique</div></div></div>
+          <ul>
+            <li>Participation aux projets de digitalisation des processus métier :</li>
+          </ul>
+          <div class="tags" style="margin-left:22px"><span class="tag">E-conférence</span><span class="tag">Dématérialisation de la DOMSE</span><span class="tag">Signature électronique</span><span class="tag">Gestion des changements</span><span class="tag">Data collecte</span></div>
+          <ul style="margin-top:6px">
+            <li>Conception et développement, dans le cadre de mon mémoire de Licence, d'une application web de gestion des stocks pour automatiser le suivi des entrées, des sorties et des inventaires.</li>
+            <li>Formation et assistance des utilisateurs des applications métier.</li>
+            <li>Automatisation des formulaires d'enquêtes de satisfaction pour fiabiliser les données collectées.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job reveal">
+        <div class="when"><b>Projets personnels</b>Freelance</div>
+        <div>
+          <div class="head"><div class="logo wa" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg></div><div><h3>Développeur freelance</h3><div class="org">Applications web et mobiles pour des commerces et des marques ivoiriennes</div></div></div>
+          <ul>
+            <li><strong>Ebrié Choco</strong> : application mobile Flutter d'une marque culturelle ivoirienne, avec événements, pass, boutique, réservation de stands et paiement mobile.</li>
+            <li><strong>MobiShop</strong> : application web de gestion d'une boutique de téléphones, avec stock, caisse, garanties et fournisseurs.</li>
+            <li><strong>Chatbot WhatsApp</strong> : réponses automatiques et prise de commandes pour des vendeurs en ligne et des restaurants.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PROJETS ================= -->
+<section class="block" id="projets">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Projets</h2>
+      <p>Des applications utilisées en entreprise, et les travaux de data science menés pendant mon Master.</p>
+    </div>
+
+    <article class="case reveal">
+      <div>
+        <div class="kicker">Mémoire de Master 2, en cours</div>
+        <h3>Machine Learning pour prédire la performance des fournisseurs</h3>
+        <p>Les 10 fournisseurs d'Orange CI envoient leurs tickets dans des formats différents : exports Redmine, GLPI, mails quotidiens ou mensuels. J'ai construit une chaîne qui harmonise ces données, calcule le respect des SLA de chaque ticket selon le fournisseur et la priorité, puis prédit la performance du mois suivant.</p>
+        <ol class="steps">
+          <li>Collecte et harmonisation de 10 sources hétérogènes en Python</li>
+          <li>Moteur de calcul SLA par fournisseur et par priorité (P1 à P4)</li>
+          <li>Détection des dépassements et modèles de prédiction mensuelle</li>
+          <li>Restitution dans Power BI pour le suivi des contrats</li>
+        </ol>
+        <div class="stack"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Power BI</span><span class="tag">CRISP-DM</span></div>
+      </div>
+      <aside>
+        <h4>Taux de respect des SLA sur un mois</h4>
+        <ul class="bars">
+          <li><span>Fournisseur A</span><span class="track"><i style="width:90%"></i></span><b>96 %</b></li>
+          <li><span>Fournisseur B</span><span class="track"><i style="width:77.5%"></i></span><b>91 %</b></li>
+          <li><span>Fournisseur C</span><span class="track"><i style="width:67.5%"></i></span><b>87 %</b></li>
+          <li><span>Fournisseur D</span><span class="track"><i class="low" style="width:45%"></i></span><b>78 %</b></li>
+          <li><span>Fournisseur E</span><span class="track"><i class="low" style="width:30%"></i></span><b>72 %</b></li>
+        </ul>
+        <p class="bars-note">Échelle de 60 à 100 %. Le trait orange marque le seuil de 85 %. Données d'exemple.</p>
+      </aside>
+    </article>
+
+    <h3 class="plist-title reveal">Applications métier</h3>
+    <p class="plist-sub reveal">Développées en entreprise, pour Orange Côte d'Ivoire et le Port Autonome d'Abidjan.</p>
+    <ul class="plist">
+      <li class="prow plist-head" aria-hidden="true"><h4>Application</h4><p>Ce qu'elle fait</p><span class="tech">Technique</span><span class="st">Statut</span></li>
+      <li class="prow reveal"><h4>Boussole</h4><p>Pilotage budgétaire OPEX/CAPEX d'une direction : lignes budgétaires, bons de commande, acomptes, engagé et payé.</p><span class="tech">PostgreSQL, Docker, Active Directory</span><span class="st live">En production</span></li>
+      <li class="prow reveal"><h4>Gestion des contrats</h4><p>Cycle de vie des contrats, données cloisonnées par département, journal d'audit.</p><span class="tech">Chart.js, rôles par profil</span><span class="st">Livrée</span></li>
+      <li class="prow reveal"><h4>GOP</h4><p>Demandes d'opérations planifiées sur le SI, avec validation à deux niveaux et calendrier.</p><span class="tech">JWT, FullCalendar</span><span class="st">Livrée</span></li>
+      <li class="prow reveal"><h4>SRM</h4><p>Outil de gestion de la relation fournisseurs de la Direction des Achats, repris en application multi-utilisateurs.</p><span class="tech">Django, Angular</span><span class="st wip">En cours</span></li>
+      <li class="prow reveal"><h4>Gestion des stocks du PAA</h4><p>Application web qui remplace le suivi manuel des stocks au Port Autonome d'Abidjan : suivi en temps réel, entrées et sorties, inventaires. Objectif : moins d'erreurs d'inventaire, moins de surcoûts et une meilleure traçabilité.</p><span class="tech">Python, Django, UML, Processus Unifié</span><span class="st">Mémoire de Licence</span></li>
+    </ul>
+
+    <h3 class="plist-title reveal">Projets freelance</h3>
+    <p class="plist-sub reveal">Réalisés en indépendant pour des clients ivoiriens.</p>
+    <ul class="plist">
+      <li class="prow reveal"><h4>Ebrié Choco</h4><p>Application mobile d'une marque culturelle ivoirienne : événements, pass, boutique, réservation de stands.</p><span class="tech">Flutter, paiement mobile</span><span class="st wip">En cours</span></li>
+      <li class="prow reveal"><h4>MobiShop</h4><p>Gestion d'une boutique de téléphones : stock, caisse, garanties, fournisseurs.</p><span class="tech">Django REST, Angular 21</span><span class="st">Livrée</span></li>
+      <li class="prow reveal"><h4>Chatbot WhatsApp</h4><p>Réponses automatiques aux clients et prise de commandes pour des vendeurs en ligne et des restaurants.</p><span class="tech">WhatsApp, automatisation</span><span class="st">Livré</span></li>
+    </ul>
+
+    <h3 class="plist-title reveal">Data science et BI</h3>
+    <p class="plist-sub reveal">Travaux en entreprise et projets du Master 2 Data Science.</p>
+    <ul class="plist">
+      <li class="prow reveal"><h4>Comité de Performance IT</h4><p>Tableau de bord multi-domaines (Hotline, QoS IT, incidents et crises, systèmes) alimenté depuis GLPI.</p><span class="tech">Power BI, DAX, N8N</span><span class="st">Orange CI</span></li>
+      <li class="prow reveal"><h4>Prévision du prix du cacao</h4><p>Pipeline reproductible avec versionnage des données et suivi des expériences.</p><span class="tech">DVC, MLflow</span><span class="st">Master 2</span></li>
+      <li class="prow reveal"><h4>Détection d'anomalies</h4><p>Intrusions réseau (CICIDS 2017) et anomalies industrielles (SKAB).</p><span class="tech">Autoencoders, Isolation Forest</span><span class="st">Master 2</span></li>
+      <li class="prow reveal"><h4>Fraude Bitcoin</h4><p>Détection de communautés et classification sur le graphe de transactions Elliptic.</p><span class="tech">NetworkX, GraphSAGE</span><span class="st">Master 2</span></li>
+      <li class="prow reveal"><h4>Segmentation clients</h4><p>Clustering avancé et méthodes d'ensemble avec calibration et optimisation bayésienne.</p><span class="tech">scikit-learn, Optuna</span><span class="st">Master 2</span></li>
+      <li class="prow reveal"><h4>CacaoChain-CI</h4><p>Plateforme blockchain de traçabilité et de paiement équitable pour la filière cacao.</p><span class="tech">Blockchain</span><span class="st">Master 2</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= COMPÉTENCES ================= -->
+<section class="block tint" id="competences">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Compétences</h2>
+      <p>Les outils que j'utilise au quotidien, de la donnée brute jusqu'à l'application en production.</p>
+    </div>
+    <div class="skills">
+      <div class="skill reveal"><h3>Data et BI</h3><ul><li>Power BI, DAX, Power Query</li><li>Excel avancé</li><li>SQL, PostgreSQL</li><li>Modélisation en étoile, ETL</li><li>Indicateurs SLA et KPI</li></ul></div>
+      <div class="skill reveal"><h3>Machine Learning</h3><ul><li>Python, pandas, scikit-learn</li><li>XGBoost, Optuna</li><li>TensorFlow, Keras</li><li>Détection d'anomalies</li><li>R</li></ul></div>
+      <div class="skill reveal"><h3>Développement</h3><ul><li>Django, Django REST Framework</li><li>Angular, TypeScript</li><li>Flutter, Dart</li><li>Authentification JWT et AD</li><li>Chart.js</li></ul></div>
+      <div class="skill reveal"><h3>Automatisation et déploiement</h3><ul><li>N8N, GLPI</li><li>Docker, Podman</li><li>Linux</li><li>Git, GitLab</li><li>DVC, MLflow</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMATION ================= -->
+<section class="block" id="formation">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Formation</h2>
+      <p>Un socle en informatique de gestion, une spécialisation en science des données, et des certifications en IA, cybersécurité et développement.</p>
+    </div>
+    <ol class="edu" reversed>
+      <li class="reveal"><span class="yr num">Depuis 2024</span><div class="logo"><img src="logos/upb.png" alt="UPB"></div><div><h3>Master 2 Data Science <span class="now">En cours</span></h3><p>Université Polytechnique de Bingerville</p></div></li>
+      <li class="reveal"><span class="yr num">2021 – 2024</span><div class="logo"><img src="logos/upb.png" alt="UPB"></div><div><h3>Licence MIAGE</h3><p>Méthodes informatiques appliquées à la gestion des entreprises, Université Polytechnique de Bingerville</p><p class="memo">Mémoire : mise en place d'une application web de gestion des stocks au Port Autonome d'Abidjan</p></div></li>
+      <li class="reveal"><span class="yr num">2021</span><div class="logo">BAC</div><div><h3>Baccalauréat scientifique, série D</h3><p>Collège Koné Mamadou, Attécoubé</p></div></li>
+    </ol>
+
+    <div class="certs-title reveal"><h3>Certifications</h3><span>9 obtenues</span></div>
+    <ul class="certs">
+      <li class="reveal"><div class="logo"><img src="logos/growing.png" alt=""></div><div><b>Développeur Full Stack et soft skills</b><span>GRowing Consulting et Proactive Swiss</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>CyberOps Associate</b><span>Cisco Networking Academy</span></div></li>
+      <li class="reveal"><div class="logo"><img src="logos/esatic-icon.png" alt=""></div><div><b>Cybersécurité opérationnelle</b><span>ESATIC, attestation de formation</span></div></li>
+      <li class="reveal"><div class="logo"><img src="logos/nextflutter.png" alt=""></div><div><b>Flutter, développeur Dart avancé</b><span>NextFlutter</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>Appliquer l'IA : analyser les avis des clients</b><span>Cybastion IT Academy et Cisco</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>Appliquer l'IA : mettre à jour votre CV</b><span>Cybastion IT Academy et Cisco</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>Introduction à l'IA moderne et à l'art du prompt</b><span>Cybastion IT Academy et Cisco</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>Introduction à la cybersécurité</b><span>Cybastion IT Academy et Cisco</span></div></li>
+      <li class="reveal"><div class="logo cisco">CISCO</div><div><b>Sensibilisation au numérique</b><span>Cybastion IT Academy et Cisco</span></div></li>
+    </ul>
+
+    <div class="misc reveal">
+      <div><h3>Langues</h3><p>Français <span>courant</span><br>Anglais <span>intermédiaire</span></p></div>
+      <div><h3>Sport</h3><p>Taekwondo, ceinture bleue</p></div>
+      <div><h3>Mobilité</h3><p>Permis AB</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid reveal">
+    <div>
+      <h2>Parlons de votre projet data.</h2>
+      <p class="lead">Un poste, une mission de tableau de bord ou une application à construire : écrivez-moi, ou appelez-moi directement.</p>
+      <a class="mail" href="mailto:mounetandre13@gmail.com">mounetandre13@gmail.com</a>
+    </div>
+    <div>
+      <ul class="channels">
+        <li><a href="https://wa.me/2250759195822" target="_blank" rel="noopener"><span>Téléphone et WhatsApp</span><span class="num">+225 07 59 19 58 22</span></a></li>
+        <li><a href="https://www.linkedin.com/in/armel-mounet-b6301a246/" target="_blank" rel="noopener"><span>LinkedIn</span><span>Armel Mounet</span></a></li>
+        <li><a href="https://github.com/Andrearmel" target="_blank" rel="noopener"><span>GitHub</span><span>Andrearmel</span></a></li>
+      </ul>
+      <a href="cv.pdf" class="btn btn-primary" download>Télécharger mon CV</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© <span id="y"></span> Armel Mounet</span><span>Abidjan, Côte d'Ivoire</span></div></footer>
+
+<script>
+(() => {
+  const $ = q => document.querySelector(q), $$ = q => [...document.querySelectorAll(q)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#y').textContent = new Date().getFullYear();
+
+  // Nom : lettres animées une par une
+  let k = 0;
+  $$('.name span').forEach(sp => {
+    const t = sp.textContent; sp.textContent = ''; sp.setAttribute('aria-hidden', 'true');
+    [...t].forEach(c => { const e = document.createElement('i'); e.className = 'ch'; e.style.fontStyle = 'normal'; e.style.setProperty('--i', k++); e.textContent = c; sp.appendChild(e); });
+  });
+  $('.name').setAttribute('aria-label', 'Armel Mounet');
+
+  // Menu mobile
+  const burger = $('#burger'), menu = $('#menu');
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }));
+
+  // Indicateur de section dans le menu
+  const ind = document.createElement('span'); ind.className = 'ind'; menu.appendChild(ind);
+  const links = $$('.menu a:not(.btn)'), secs = links.map(l => $(l.getAttribute('href')));
+  const moveInd = l => { if (!l) { ind.style.opacity = 0; return; } ind.style.opacity = 1; ind.style.left = l.offsetLeft + 'px'; ind.style.width = l.offsetWidth + 'px'; };
+
+  // Défilement : progression, filet, section active, frise
+  const bar = $('#top-bar'), prog = $('#progress'), jobs = $('#jobs'), rail = $('#rail');
+  const onScroll = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    bar.classList.toggle('lined', scrollY > 10);
+    let cur = -1; secs.forEach((sec, i) => { if (sec && sec.getBoundingClientRect().top < innerHeight * .4) cur = i; });
+    links.forEach((l, i) => l.classList.toggle('cur', i === cur)); moveInd(links[cur]);
+    if (jobs && rail) { const r = jobs.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (innerHeight * .55 - r.top) / r.height)); rail.style.height = (p * r.height) + 'px'; }
+  };
+  addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+
+  // Compteurs
+  const fmt = n => n.toLocaleString('fr-FR').replace(/ | /g, ' ');
+  const count = el => {
+    const to = +el.dataset.to, t0 = performance.now(), dur = 1500;
+    const step = t => { const q = Math.min(1, (t - t0) / dur); el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - q, 3)))); if (q < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+
+  // Apparitions au défilement, en cascade entre éléments voisins
+  $$('.reveal').forEach(el => {
+    const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    const i = sib.indexOf(el); if (!el.style.getPropertyValue('--rd')) el.style.setProperty('--rd', Math.min(i, 6) * 70 + 'ms');
+  });
+  $$('.bars .track i').forEach((b, i) => b.style.setProperty('--rd', 200 + i * 120 + 'ms'));
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const t = e.target; t.classList.add('in');
+    if (!reduce) t.querySelectorAll('.counter').forEach(count);
+    io.unobserve(t);
+  }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+  if (reduce) $$('.reveal').forEach(el => el.classList.add('in')); else $$('.reveal').forEach(el => io.observe(el));
+
+  // Graphique SLA (données d'exemple)
+  const months = ['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Août','Sep','Oct','Nov','Déc'];
+  const full = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const A = [93,95,94,96,95,97,96,94,96,97,95,96];
+  const B = [88,87,89,82,86,90,88,81,87,89,83,88];
+  const W = 760, H = 300, L = 44, R = 16, T = 12, Bm = 34;
+  const min = 75, max = 100;
+  const x = i => L + i * (W - L - R) / (months.length - 1);
+  const y = v => T + (max - v) / (max - min) * (H - T - Bm);
+  const ns = 'http://www.w3.org/2000/svg', svg = $('#sla');
+  const el = (n, a, txt) => { const e = document.createElementNS(ns, n); for (const q in a) e.setAttribute(q, a[q]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+  [75, 80, 85, 90, 95, 100].forEach(v => {
+    if (v !== 85) el('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: 'grid' });
+    el('text', { x: L - 10, y: y(v) + 4, 'text-anchor': 'end' }, v + ' %');
+  });
+  months.forEach((m, i) => el('text', { x: x(i), y: H - 10, 'text-anchor': 'middle' }, m));
+  el('line', { x1: L, x2: W - R, y1: y(85), y2: y(85), class: 'thr' });
+  el('text', { x: L + 8, y: y(85) + 18, class: 'thr-label' }, 'Seuil contractuel 85 %');
+  const hl = el('line', { x1: 0, x2: 0, y1: T, y2: H - Bm, class: 'hover-line' });
+  const path = (d, cls) => {
+    const p = el('path', { d: d.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1)).join(' '), class: cls });
+    const len = p.getTotalLength(); p.style.setProperty('--len', len); p.classList.add('draw'); return p;
+  };
+  path(B, 'l2'); path(A, 'l1');
+  B.forEach((v, i) => { if (v < 85) el('circle', { cx: x(i), cy: y(v), r: 5, class: 'dot breach', style: `animation-delay:${0.3 + 1.8 * i / 11}s` }); });
+  const pa = el('circle', { r: 5, class: 'hp', fill: 'var(--cobalt)', stroke: '#fff', 'stroke-width': 2 });
+  const pb = el('circle', { r: 5, class: 'hp', fill: '#9aa3b2', stroke: '#fff', 'stroke-width': 2 });
+  const tip = $('#tip'), wrapEl = svg.parentElement;
+  const show = i => {
+    hl.setAttribute('x1', x(i)); hl.setAttribute('x2', x(i)); hl.style.opacity = .25;
+    pa.setAttribute('cx', x(i)); pa.setAttribute('cy', y(A[i])); pb.setAttribute('cx', x(i)); pb.setAttribute('cy', y(B[i]));
+    pa.style.opacity = pb.style.opacity = 1;
+    const bad = B[i] < 85;
+    tip.innerHTML = `<b>${full[i][0].toUpperCase() + full[i].slice(1)}</b><br>Fournisseur A : ${A[i]} %<br><span class="${bad ? 'bad' : ''}">Fournisseur B : ${B[i]} %${bad ? ' (sous le seuil)' : ''}</span>`;
+    const sc = svg.getBoundingClientRect().width / W;
+    const sr = svg.getBoundingClientRect(), wr = wrapEl.getBoundingClientRect();
+    tip.style.left = (sr.left - wr.left + wrapEl.scrollLeft + x(i) * sc) + 'px'; tip.style.top = (sr.top - wr.top + y(Math.max(A[i], B[i])) * sc - 6) + 'px'; tip.style.opacity = 1;
+  };
+  const hide = () => { tip.style.opacity = 0; hl.style.opacity = 0; pa.style.opacity = pb.style.opacity = 0; };
+  months.forEach((m, i) => {
+    const w = (W - L - R) / 11, r = el('rect', { x: x(i) - w / 2, y: T, width: w, height: H - T - Bm, class: 'hit', tabindex: 0, 'aria-label': `${full[i]} : fournisseur A ${A[i]} %, fournisseur B ${B[i]} %` });
+    r.addEventListener('mouseenter', () => show(i)); r.addEventListener('focus', () => show(i));
+    r.addEventListener('touchstart', () => show(i), { passive: true });
+  });
+  svg.addEventListener('mouseleave', hide); svg.addEventListener('focusout', hide);
+})();
+</script>
+
+<!-- ================= ASSISTANT ================= -->
+<button class="bot-launch" id="botLaunch" aria-controls="bot" aria-expanded="false"><span class="av">AM</span><span class="lbl">Une question ?</span></button>
+<div class="bot" id="bot" role="dialog" aria-label="Assistant d'Armel Mounet" aria-modal="false">
+  <header>
+    <img src="photo.jpg" alt="">
+    <div><b>Assistant d'Armel</b><small>Répond tout de suite</small></div>
+    <button class="x" id="botClose" aria-label="Fermer l'assistant">×</button>
+  </header>
+  <div class="log" id="botLog" aria-live="polite"></div>
+  <div class="sugg" id="botSugg"></div>
+  <form id="botForm" autocomplete="off">
+    <label for="botIn" class="sr" style="position:absolute;left:-9999px">Votre question</label>
+    <input id="botIn" type="text" placeholder="Posez votre question…" maxlength="300">
+    <button type="submit" aria-label="Envoyer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </form>
+  <div class="foot">Assistant automatique. Pour un échange direct, écrivez à Armel sur WhatsApp.</div>
+</div>
+<script>
+(() => {
+  const WA = 'https://wa.me/2250759195822', MAIL = 'mounetandre13@gmail.com';
+  const handoff = q => {
+    const t = encodeURIComponent('Bonjour Armel, je viens de votre portfolio.' + (q ? ' Ma question : ' + q : ''));
+    return `<div class="cta"><a class="wa" href="${WA}?text=${t}" target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="ml" href="mailto:${MAIL}?subject=${encodeURIComponent('Contact depuis votre portfolio')}&body=${t}">Envoyer un email</a></div>`;
+  };
+  const go = id => `<a href="#${id}" data-close>voir la section</a>`;
+
+  // Base de connaissances : mots-clés (sans accents) -> réponse
+  const KB = [
+    { k: ['bonjour','salut','bonsoir','hello','coucou','hey','hi'], a: () => 'Bonjour ! Je suis l\'assistant d\'Armel. Posez-moi vos questions sur son parcours, ses compétences, ses projets ou sa disponibilité.' },
+    { k: ['merci','super','parfait','genial','top'], a: () => 'Avec plaisir. Si vous souhaitez échanger directement avec Armel, il répond sur WhatsApp ou par email.' + handoff() },
+    { k: ['qui','presente','presentation','profil','resume','toi','armel','lui'], a: () => 'Armel Mounet est <b>Consultant Data Scientist</b> à la DSI d\'Orange Côte d\'Ivoire depuis septembre 2026. Il mesure la performance du système d\'information (incidents, SLA, disponibilité) et construit les outils pour la piloter : tableaux de bord Power BI, modèles de Machine Learning et applications métier. Il termine un Master 2 en Data Science à l\'UPB.' },
+    { k: ['poste','actuel','travail','emploi','orange','metier','role','job'], a: () => 'Il est <b>Consultant Data Scientist à la DSI d\'Orange Côte d\'Ivoire</b>. Il conçoit les tableaux de bord des Comités de Performance IT, automatise la collecte des données (GLPI, N8N, Power BI), analyse la performance des fournisseurs et développe des applications internes. ' + go('experience') + '.' },
+    { k: ['experience','parcours','carriere','stage','stages','chicshop'], a: () => 'Son parcours :<ul><li><b>Depuis sept. 2026</b> : Consultant Data Scientist, Orange CI</li><li><b>2025 – 2026</b> : stagiaire Analyste Performance Projet, Orange CI</li><li><b>2025</b> : informaticien chargé d\'inventaire, ChicShop</li><li><b>2024 – 2025</b> : stagiaire digitalisation des processus, Port Autonome d\'Abidjan</li><li>Projets freelance en parallèle</li></ul>' + go('experience') },
+    { k: ['competence','competences','outil','outils','technologie','technologies','stack','maitrise','sait','langage','langages'], a: () => 'Ses principaux outils :<ul><li><b>Data et BI</b> : Power BI, DAX, Excel avancé, SQL, PostgreSQL</li><li><b>Machine Learning</b> : Python, pandas, scikit-learn, XGBoost, TensorFlow</li><li><b>Développement</b> : Django, Angular, Flutter</li><li><b>Automatisation</b> : N8N, GLPI, Docker, Linux, Git</li></ul>' + go('competences') },
+    { k: ['power','bi','dax','dashboard','tableau','tableaux','reporting','kpi'], a: () => 'Power BI est son outil principal. Il construit les tableaux de bord des Comités de Performance IT d\'Orange CI : taux de résolution des incidents, niveaux de SLA, disponibilité des systèmes. Les données arrivent automatiquement depuis GLPI via N8N.' },
+    { k: ['machine','learning','ml','ia','intelligence','prediction','predire','modele','modeles','data','science','scientist','python'], a: () => 'En Machine Learning, il travaille surtout en Python (pandas, scikit-learn, XGBoost, TensorFlow). Son projet phare : <b>prédire la performance des fournisseurs IT</b> d\'Orange CI à partir de 5 523 tickets et de 10 fournisseurs, pour anticiper les dépassements de SLA. Il a aussi travaillé sur la détection d\'anomalies, le graph mining et la segmentation clients.' },
+    { k: ['memoire','master','these','sla','fournisseur','fournisseurs','ticket','tickets'], a: () => 'Son mémoire de Master 2 porte sur l\'<b>utilisation du Machine Learning pour prédire la performance des fournisseurs</b> à Orange CI. Il harmonise les tickets de 10 fournisseurs aux formats différents, calcule le respect des SLA par priorité et prédit la performance du mois suivant, avec un seuil contractuel de 85 %. ' + go('projets') + '.' },
+    { k: ['port','autonome','paa','digitalisation','domse'], a: () => 'Au <b>Port Autonome d\'Abidjan</b> (DSI Numérique, juillet 2024 – mars 2025), il a participé à des projets de digitalisation : e-conférence, dématérialisation de la DOMSE, signature électronique, gestion des changements, collecte de données. Il a formé les utilisateurs et développé, pour son mémoire de Licence, une application web de gestion des stocks.' },
+    { k: ['licence','stock','stocks','inventaire','uml'], a: () => 'Pour son mémoire de Licence MIAGE, réalisé pendant son stage au Port Autonome d\'Abidjan, il a conçu une <b>application web de gestion des stocks</b> en Python et Django : suivi en temps réel, entrées et sorties, inventaires. La modélisation suit le Processus Unifié et UML.' },
+    { k: ['projet','projets','realisation','realisations','application','applications','app','portfolio','boussole','gop','contrat','contrats','srm'], a: () => 'Quelques réalisations :<ul><li><b>Boussole</b> : pilotage budgétaire OPEX/CAPEX, en production chez Orange CI</li><li><b>Gestion des contrats</b> et <b>GOP</b> (opérations planifiées) pour Orange CI</li><li><b>Gestion des stocks</b> du Port Autonome d\'Abidjan</li><li>Projets freelance : <b>Ebrié Choco</b>, <b>MobiShop</b>, chatbot WhatsApp</li></ul>' + go('projets') },
+    { k: ['freelance','independant','mission','missions','client','clients','ebrie','choco','mobishop','chatbot','whatsapp bot','mobile','flutter'], a: () => 'En freelance, il a réalisé <b>Ebrié Choco</b> (application mobile Flutter d\'une marque culturelle ivoirienne, avec paiement mobile), <b>MobiShop</b> (gestion d\'une boutique de téléphones) et un <b>chatbot WhatsApp</b> de prise de commandes pour des commerçants. Il reste ouvert à de nouvelles missions.' + handoff('Je souhaite vous proposer une mission freelance.') },
+    { k: ['formation','diplome','diplomes','etude','etudes','ecole','universite','upb','bac','baccalaureat','miage'], a: () => 'Sa formation :<ul><li><b>Master 2 Data Science</b>, Université Polytechnique de Bingerville, depuis 2024</li><li><b>Licence MIAGE</b>, UPB, 2021 – 2024</li><li><b>Baccalauréat série D</b>, 2021</li></ul>' + go('formation') },
+    { k: ['certification','certifications','certificat','certificats','cisco','cyber','cybersecurite','securite','esatic'], a: () => 'Il a obtenu <b>9 certifications</b>, dont CyberOps Associate (Cisco), Cybersécurité opérationnelle (ESATIC), Développeur Full Stack (GRowing Consulting et Proactive Swiss), Flutter Dart avancé (NextFlutter) et plusieurs modules IA et cybersécurité de Cybastion et Cisco. ' + go('formation') + '.' },
+    { k: ['langue','langues','anglais','english','francais'], a: () => 'Il parle <b>français</b> couramment et <b>anglais</b> à un niveau intermédiaire.' },
+    { k: ['disponible','disponibilite','recrute','recrutement','embauche','embaucher','opportunite','opportunites','cdi','cdd','poste libre','ouvert','international','etranger','demenager'], a: () => 'Oui, Armel est <b>ouvert aux opportunités</b>, à Abidjan, ailleurs en Côte d\'Ivoire et à l\'international. Le plus simple est de le contacter directement :' + handoff('Je souhaite échanger avec vous au sujet d\'une opportunité.') },
+    { k: ['salaire','remuneration','tarif','tarifs','prix','cout','combien','tjm'], a: () => 'Ces questions se discutent directement avec Armel, selon la mission ou le poste.' + handoff('Je souhaite discuter des conditions d\'une collaboration.') },
+    { k: ['contact','contacter','joindre','telephone','numero','appeler','email','mail','whatsapp','linkedin','github','rdv','rendez','entretien'], a: () => 'Vous pouvez joindre Armel :<ul><li>Téléphone et WhatsApp : <b>+225 07 59 19 58 22</b></li><li>Email : <a href="mailto:' + MAIL + '">' + MAIL + '</a></li><li><a href="https://www.linkedin.com/in/armel-mounet-b6301a246/" target="_blank" rel="noopener">LinkedIn</a> et <a href="https://github.com/Andrearmel" target="_blank" rel="noopener">GitHub</a></li></ul>' + handoff() },
+    { k: ['cv','curriculum','resume pdf','telecharger'], a: () => 'Vous pouvez <a href="cv.pdf" download>télécharger son CV ici</a>.' },
+    { k: ['habite','ville','localisation','situe','base','pays','cote','ivoire'], a: () => 'Armel est basé à <b>Abidjan, en Côte d\'Ivoire</b>. Il est mobile (permis AB) et ouvert aux missions à l\'international.' },
+    { k: ['sport','loisir','loisirs','passion','hobby','taekwondo'], a: () => 'En dehors du travail, il pratique le <b>taekwondo</b> (ceinture bleue).' },
+    { k: ['assistant','bot','robot','qui es','humain'], a: () => 'Je suis un assistant automatique qui répond à partir du contenu de ce portfolio. Pour parler à Armel en personne :' + handoff() },
+  ];
+  const SUGG = ['Qui est Armel ?', 'Ses compétences', 'Son mémoire de Master', 'Ses projets', 'Est-il disponible ?', 'Le contacter'];
+
+  const norm = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]/g, ' ');
+  const answer = q => {
+    const words = norm(q).split(/\s+/).filter(Boolean), text = ' ' + words.join(' ') + ' ';
+    let best = null, score = 0;
+    KB.forEach((e, i) => {
+      let sc = 0;
+      e.k.forEach(k => { if (k.includes(' ') ? text.includes(' ' + k + ' ') : words.includes(k)) sc += k.length > 3 ? 2 : 1; });
+      if (i < 2 && words.length > 3) sc -= 1; // salutations : ne pas l'emporter sur une vraie question
+      if (sc > score) { score = sc; best = e; }
+    });
+    return best ? best.a() : 'Je n\'ai pas la réponse à cette question. Armel pourra vous répondre directement :' + handoff(q);
+  };
+
+  const launch = document.getElementById('botLaunch'), bot = document.getElementById('bot'), log = document.getElementById('botLog');
+  const form = document.getElementById('botForm'), input = document.getElementById('botIn'), sugg = document.getElementById('botSugg');
+  const add = (html, who) => { const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; };
+  const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let busy = false;
+  const ask = q => {
+    q = q.trim(); if (!q || busy) return; busy = true;
+    add(esc(q), 'u');
+    const t = add('<span class="typing"><i></i><i></i><i></i></span>', 'b'); t.style.padding = '0';
+    setTimeout(() => { t.remove(); add(answer(q), 'b'); busy = false; }, 550 + Math.min(900, q.length * 12));
+  };
+  SUGG.forEach(s => { const b = document.createElement('button'); b.type = 'button'; b.textContent = s; b.onclick = () => ask(s); sugg.appendChild(b); });
+  let greeted = false;
+  const open = () => {
+    bot.classList.add('open'); launch.classList.add('hidden'); launch.setAttribute('aria-expanded', 'true');
+    if (!greeted) { greeted = true; add('Bonjour ! Je suis l\'assistant d\'Armel Mounet. Je peux vous parler de son parcours, de ses compétences, de ses projets ou de sa disponibilité. Que souhaitez-vous savoir ?', 'b'); }
+    setTimeout(() => input.focus(), 250);
+  };
+  const close = () => { bot.classList.remove('open'); launch.classList.remove('hidden'); launch.setAttribute('aria-expanded', 'false'); launch.focus(); };
+  launch.onclick = open;
+  document.getElementById('botClose').onclick = close;
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && bot.classList.contains('open')) close(); });
+  form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); input.value = ''; });
+  log.addEventListener('click', e => { const a = e.target.closest('a[data-close]'); if (a && innerWidth <= 520) close(); });
+})();
+</script>
+</body>
+</html>
